@@ -1,0 +1,46 @@
+.container {
+    display: flex;
+    justify-content: center;
+
+}
+.content {
+    max-width: 800px;
+}
+
+p label {
+    float: left;
+    width: 150px;
+}
+button {
+    border: none;
+    background-color: #2ecc71;
+    color: #FFF;
+    display: inline-block;
+    padding: 10px;
+    margin-right: 10px;
+    letter-spacing: 0.25px;
+    text-decoration: none;
+}
+input, select, textarea {
+    padding: 5px;
+    border: 1px solid #ddd;
+    width: 300px;
+}
+select {
+    width: 312px;
+}
+table {
+    width: 100%;
+    text-align: left;
+}
+th,
+td {
+    padding: 5px 10px;
+}
+th {
+    color: #fff;
+    background-color: #2ecc71;
+}
+td {
+    border-bottom: 1px solid #f2f2f2;
+}

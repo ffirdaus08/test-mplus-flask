@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link href="{{ url_for('static', filename='css/styles.css') }}"
+          rel="stylesheet" type="text/css"/>
+
+    <script src="{{ url_for('static', filename='js/angular.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/angular-resource.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/service.js') }}"></script>
+</head>
+<body ng-app="booksApp">
+
+<div ng-controller="booksController" data-ng-init="init()" class="container">
+    <div class="content">
+        <h1>TRAINING M+</h1>
+        <p>
+            <label for="tx-title">Title</label>
+            <input id="tx-title" type="text" placeholder="Title"/>
+        </p>
+        <p>
+            <label for="tx-author">Author</label>
+            <input id="tx-author" type="text" placeholder="Author"/>
+        </p>
+        <p>
+            <label for="dt-publish">Date Published</label>
+            <input id="dt-publish" type="date" onkeydown="return false"/>
+        </p>
+        <p>
+            <label for="in-pages">Pages</label>
+            <input id="in-pages" type="number" min="0" placeholder="Number of pages"/>
+        </p>
+        <p>
+            <label for="cb-type">Type of book</label>
+            {% raw %}
+            <select id="cb-type">
+                <option ng-repeat="t in types" value="{{ t.id }}">{{ t.title }}</option>
+            </select>
+            {% endraw %}
+        </p>
+        <p>
+
+            <button id="bt-save" type="button" ng-click="save()">Save</button>
+            <button id="bt-delete" type="button" ng-click="delete()">delete</button>
+            <button id="bt-cancel" type="button" ng-click="clear()">cancel</button>
+        </p>
+
+
+        <table id="tb-book">
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Date of Published</th>
+                <th>Number of Pages</th>
+                <th>Type of books</th>
+                <th>Edit</th>
+            </tr>
+            {% raw %}
+            <tr ng-repeat="row in books">
+                <td ng-bind="row.title"></td>
+                <td ng-bind="row.author"></td>
+                <td ng-bind="row.date"></td>
+                <td ng-bind="row.pages"></td>
+                <td ng-bind="getTypeLabel(row.type_id)"></td>
+                <td><a href="#" ng-click="edit($index)">Edit</a></td>
+            </tr>
+            {% endraw %}
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
